@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Project" Class="DataClasses2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Project;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Harmony_Music_Player_.Properties.Settings" SettingsPropertyName="ProjectConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="full_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ad_username" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="date_of_birth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="phone_number" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.artist" Member="artists">
+    <Type Name="artist">
+      <Column Name="A_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="A_NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="A_GENRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="A_BIOGRAPHY" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.premium" Member="premiums">
+    <Type Name="premium">
+      <Column Name="PAYMENT_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P_AMOUNT" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PROMOCODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_tbl_premium" Member="User_tbl" ThisKey="username" OtherKey="username" Type="User_tbl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.User_tbl" Member="User_tbls">
+    <Type Name="User_tbl">
+      <Column Name="full_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="date_of_birth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="phone_number" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="membership" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_tbl_premium" Member="premiums" ThisKey="username" OtherKey="username" Type="premium" />
+    </Type>
+  </Table>
+</Database>
